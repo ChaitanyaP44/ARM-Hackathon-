@@ -7,6 +7,46 @@
 	 EXPORT __main
 		ENTRY 
 
+
+
+
+
+__computeCos FUNCTION							
+		
+loop12	VLDR.F32 S9,=3.141592654
+		VLDR.F32 S8,=180.0
+		VLDR.F32 S5,=1.0
+		MOV R1,#22         					
+
+		
+
+		VMUL.F32 S1,S7,S9
+		VDIV.F32 S1,S1,S8					
+		VMUL.F32 S2,S1,S1					
+		VNEG.F32 S2,S2						
+		VLDR.F32 S1,=1.0
+		VMOV.F32 S3,S1						
+		VLDR.F32 S4,=1.0
+		VMOV.F32 S24,S1		                
+
+		
+
+loop2	VMUL.F32 S3,S3,S2					
+		VDIV.F32 S3,S3,S4					
+		VADD.F32 S4,S4,S5					
+		VDIV.F32 S3,S3,S4					
+		VADD.F32 S4,S4,S5					
+		VADD.F32 S24,S24,S3					
+
+		
+		SUB R1,R1,#1						 
+		CMP R1,#0
+		BNE loop2							                                   
+		BX lr
+
+		
+	ENDFUNC	
+	
 __computeSine FUNCTION			
      				            
 								
@@ -56,44 +96,6 @@ loop	VMUL.F32 S3,S3,S2
 		
 	ENDFUNC
 
-
-
-
-__computeCos FUNCTION							
-		
-loop12	VLDR.F32 S9,=3.141592654
-		VLDR.F32 S8,=180.0
-		VLDR.F32 S5,=1.0
-		MOV R1,#22         					
-
-		
-
-		VMUL.F32 S1,S7,S9
-		VDIV.F32 S1,S1,S8					
-		VMUL.F32 S2,S1,S1					
-		VNEG.F32 S2,S2						
-		VLDR.F32 S1,=1.0
-		VMOV.F32 S3,S1						
-		VLDR.F32 S4,=1.0
-		VMOV.F32 S24,S1		                
-
-		
-
-loop2	VMUL.F32 S3,S3,S2					
-		VDIV.F32 S3,S3,S4					
-		VADD.F32 S4,S4,S5					
-		VDIV.F32 S3,S3,S4					
-		VADD.F32 S4,S4,S5					
-		VADD.F32 S24,S24,S3					
-
-		
-		SUB R1,R1,#1						 
-		CMP R1,#0
-		BNE loop2							                                   
-		BX lr
-
-		
-	ENDFUNC	
 
 __SPIRALTWO FUNCTION							
 		;PUSH {lr}

@@ -111,7 +111,7 @@ __SPIRALTWO FUNCTION					;(Draws spiral Two takes S22, S26, S27 as r, X, Y)
 		VLDR.F32 S20,=1.0	
 		VLDR.F32 S29,= 0.5
 		VLDR.F32 S21,=361.0
-		VLDR.F32 S7,=0.0 					;ITERATES FROM 0 to 360 DEGREES
+		VLDR.F32 S7,=0.0 					;Interates from 0 to 360 
 loop4	VMOV.F32 R0,S7
 		BL printValue		
 		BL print_delimeter
